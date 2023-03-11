@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Pants",
+    "description": "Vans",
+    "category": null,
+    "price": "9900",
+    "code": "code1234",
+    "stock": "23",
+    "status": true,
+    "id": "W"
+  },
+  {
+    "title": "czxcz",
+    "description": "czxcc",
+    "category": null,
+    "price": "333",
+    "code": "332",
+    "stock": "33234",
+    "status": true,
+    "id": "9"
+  }
+]

@@ -1,0 +1,20 @@
+
+<main id="main" class="container mt-5">
+    <div class="row d-flex d-flex justify-content-between">
+        {{#each allProducts}}
+            <div class="card col-md-3 m-2 border border-4">
+            <img src="{{this.thumbnail}}" class="img-fuid" alt="">
+            <div class="card-body">
+                <h2 class="card-title text-center">{{title}}</h2>
+                <p class="card-tect text-center mb-0">{{description}}</p>
+                <p class="card-text text-center">code: {{code}}</p>
+                <h3 class="card-text text-center">$ {{price}}</h3>
+                <p class="card-text text-center">Stock: {{stock}}</p>
+                <div class="d-flex justify-content-center">
+                    <button type="button" id="btn-del" class="btn btn-primary">Delete</button>
+                </div>
+            </div>    
+            </div>
+        {{/each}}
+    </div>
+</main>
