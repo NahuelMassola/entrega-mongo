@@ -10,22 +10,17 @@ class BdCartManager {
         return res.status(200).json(getAll)
     }
 
-    CreateCart = async (cart) => {
+    Create = async (cart) => {
         try {
             await cartsModel.create(cart);
             return ({message: "cart created sussesfully"})
         } catch (error) {
-            return ({message: "Error To created Cart"})
+            return error
         }
     }  
 
-    getCartIdBd = async (id) => {
-        try {
-            await cartsModel.findById(id);
-            return ({message: "carrito encontrado"});
-        } catch (error) {
-            return({message: "carrito inexistente"});
-        }
+    getCartId = async (id) => {
+            return await cartsModel.findById(id);
     }
 
     addProductToCart = async (newCart) => {
@@ -34,7 +29,7 @@ class BdCartManager {
     }
 
     updateToCart = async (cart) => {
-        await cartsModel.findByIdAndUpdate(cart.id ,cart , {new:true})
+        await cartsModel.updateOne({_id: cid } , cart)
         return ({message: "pruduct updated"});
     }
 }

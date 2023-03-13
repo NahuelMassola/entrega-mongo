@@ -50,7 +50,7 @@ const server = app.listen (PORT , () => {
 });
 
 
-mongoose.connect('mongodb://localhost:27017/test')
+mongoose.connect('mongodb://localhost:27017/Eccomerce')
 .then(() => console.log('Connected to MongoDB'));
 
 

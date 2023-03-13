@@ -1,23 +1,50 @@
 import BdCartManager from "../dao/mongoManager/bdCartManager.js";
 import BdProductManager from "../dao/mongoManager/BdProductManager.js";
+import calculosCarts from "../utils/calculosCarts.js";
+
+
 
 const Carts = new BdCartManager;
 const Product = new BdProductManager;
+const calculos = new calculosCarts
 
 class cartControllerBD {
     constructor() {}
 
-    getCartIdBd = async (res , req) => {
-        const id = req.params.cid
-        const cart = await Carts.getCartIdBd(id);
-        if(!cart) {
-            return res.status(400).json({
-                message: "Cart inexistente",
-                ok: false,
+    createCart = async (req, res) => {
+        try {
+            const {products = []} = req.body
+            let {productCartList, productsNotFound} = await calculos.mapProductCart(products)
+            const cart = {
+                priceTotal: calculos.CalculateCartTotal(productCartList),
+                quantityTotal: calculos.CalculateQuantityTotal(productCartList),
+                products:productCartList,
+            }
+            await Carts.Create(cart)
+            return res.json({
+            msg:"Carrito Creado",
+            playload: {cart, productsNotFound},
             })
-        } else {
-            res.status(200).json(cart)
+        } catch (error) {
+            return res.status(500).json ({
+                message:"Error to created cart"
+            })
         }
+    }
+
+
+    getCartIdBd = async (res , req) => {
+        try {
+            const {cid} = req.params
+            const cart = await Carts.getCartId(cid);
+        if(cart){
+        return res.json({
+            msg:"Carrito Encontrado",
+            playload: cart,
+        })}
+        } catch (error) {
+            return error
+        }    
     }
 
     addProductToCart = async (req ,res) => {

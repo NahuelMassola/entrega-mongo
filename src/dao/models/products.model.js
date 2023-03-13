@@ -23,8 +23,12 @@ const productSchema = new mongoose.Schema({
         default:1,
     },    
     thumbnail:String,
+}, {
+    versionKey: false,
+    timestamps:true
+}
 
-})
+)
 const productModel = mongoose.model('products', productSchema);
 
 export default productModel;

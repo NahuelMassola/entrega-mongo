@@ -26,5 +26,9 @@ viewsRouter.delete('/realtimeproducts/:pid' , async (req , res ) => {
     res.status(200).json(Delete)
 })
 
+viewsRouter.get('/chats' , async (req ,res ) => {
+    res.render('chats')
+})
+
 
 export default viewsRouter;

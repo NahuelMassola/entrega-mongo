@@ -1,7 +1,7 @@
 const socket = io();
 const btnForm = document.getElementById("btn-form");
 const form = document.getElementById("add-prod");
-// const btnDel = document.get("btn-del");
+
 
 const newProd = (e) => {
     e.preventDefault();
