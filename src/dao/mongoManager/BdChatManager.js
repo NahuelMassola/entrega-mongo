@@ -18,7 +18,7 @@ class BdChatsManager {
         }
     }
 
-    deleteMessage = async () => {
+    deleteMessage = async (id) => {
         try {
             const deleteMj = await chatModel.findByIdAndDelete(id)
             return deleteMj

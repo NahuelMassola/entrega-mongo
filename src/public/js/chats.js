@@ -12,11 +12,11 @@ socket.on('init-chats', ( chats ) => {
 })
 
 socket.on('add-message', (newMessage) => {
-	listChatsElement.innerHTML += `<li id="${newMessage._id}">${newMessage.userEmail} - ${newMessage.message}</li>`
+	listChatsElement.innerHTML += `<li id="${newMessage._id}">${newMessage.userMail} - ${newMessage.message}</li>`
 })
 
-socket.on('delete-message'), (message)=>{
-    //console.log (message)
-    //const message = document.getElementById(`${message._id}`)
-   // message.remove(); 
-}
+/* socket.on('delete-message'), (message)=>{
+    console.log (message)
+    const message = document.getElementById(`${message._id}`)
+    message.remove(); 
+} */
